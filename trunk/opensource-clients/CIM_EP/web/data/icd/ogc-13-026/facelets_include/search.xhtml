@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:spb="http://www.spacebel.be/genesis/jsf"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition>
+		<spb:collectionPicker root="#{form['collection_picker']}"
+			selection="#{form['collectionId']}" width="100%" min="1" max="1" />					
+		<input type="hidden" value="1" name="used_cursor" />
+		<input type="hidden" value="10" name="used_iteratorSize" />
+		
+		<h:panelGrid columns="2" style="width: 100%"
+				columnClasses="searchInputForm-label-wrap,searchInputForm-value">			
+			<c:forEach items="#{serviceBean.serviceData.osDescription.openSearchUrl.requiredParameters}" var="osParam">
+				<c:choose>
+					<c:when test="#{not empty osParam.type and not empty osParam.name and not empty osParam.title}">
+						<c:choose>
+							<c:when test="#{osParam.type eq 'list'}">
+								<spb:formselect value="used_#{osParam.name}" label="#{osParam.title}">
+									<f:selectItems value="#{osParam.optionsAsSelectItems}" />
+								</spb:formselect>
+							</c:when>
+							<c:when test="#{osParam.type eq 'date'}">
+								<spb:formcalendar label="#{osParam.title}" value="used_#{osParam.name}"
+									pattern="yyyy-MM-dd" />
+							</c:when>
+							<c:otherwise>
+								<spb:formfield label="#{osParam.title}" value="used_#{osParam.name}" />
+							</c:otherwise>
+						</c:choose>	
+					</c:when>
+				</c:choose>			   
+			</c:forEach>
+		</h:panelGrid>
+		
+		<spb:searchQueryables serviceId="#{serviceBean.serviceId}">
+			<h:panelGrid columns="2" style="width: 100%"
+				columnClasses="searchInputForm-label-wrap,searchInputForm-value">
+				<c:forEach items="#{serviceBean.serviceData.osDescription.openSearchUrl.optionalParameters}" var="osParam">
+					<c:choose>
+						<c:when test="#{not empty osParam.type and not empty osParam.name and not empty osParam.title}">
+							<c:choose>
+								<c:when test="#{osParam.type eq 'list'}">
+									<spb:formselect value="used_#{osParam.name}" label="#{osParam.title}">
+										<f:selectItems value="#{osParam.optionsAsSelectItems}" />
+									</spb:formselect>
+								</c:when>
+								<c:when test="#{osParam.type eq 'date'}">
+									<spb:formcalendar label="#{osParam.title}" value="used_#{osParam.name}"
+										pattern="yyyy-MM-dd" />
+								</c:when>
+								<c:otherwise>
+									<spb:formfield label="#{osParam.title}" value="used_#{osParam.name}" />
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+			</h:panelGrid>		
+		</spb:searchQueryables>
+	</ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<a4j:outputPanel ajaxRendered="true">
+
+		<a4j:outputPanel rendered="#{not empty messagesBean.messages}">
+			<div id="scrollzone" />
+			<script type="text/javascript">
+				jQuery('html,body').animate({scrollTop:jQuery("#scrollzone").offset().top},'slow');
+			</script>
+		</a4j:outputPanel>
+		<table class="rich-messages">
+			<a4j:repeat value="#{messagesBean.messages}" var="message">
+				<tr>
+					<td class="#{message.summary}">
+						<h:outputText
+							value="#{message.detail}" escape="false" />
+					</td>					
+				</tr>
+			</a4j:repeat>
+		</table>
+	</a4j:outputPanel>
+</ui:composition>
+</html>

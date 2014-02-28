@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<a4j:outputPanel style="height: 11px; float: left" layout="block">
+		<a4j:status ajaxRendered="true">
+			<f:facet name="start">
+				<h:graphicImage value="/images/ajax-loader.gif" />
+			</f:facet>
+		</a4j:status>
+	</a4j:outputPanel>
+</ui:composition>
+</html>
