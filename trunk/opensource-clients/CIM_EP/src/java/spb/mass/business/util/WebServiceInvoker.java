@@ -32,15 +32,14 @@ public class WebServiceInvoker {
 	public static final String SOAP_ENV_NAMESPACE = "http://schemas.xmlsoap.org/soap/envelope/";
 
 	/* SOAP Action */
-	public static final String SOAP_ACTION = "SoapAction";
-
-	/* SOAP Action */
 	public static final String SOAP_BODY = "Body";
 
 	private final static Logger log = Logger.getLogger(WebServiceInvoker.class);
 
 	public static SOAPMessage prepareSOAPMessage(String action, String xmlInput) {
 		try {
+			log.debug("xmlInput = " + xmlInput);
+			log.debug("action = " + action);
 			XMLParser xmlParser = new XMLParser();
 			xmlParser.setIsValidating(false);
 			xmlParser.setIsNamespaceAware(true);
@@ -54,12 +53,9 @@ public class WebServiceInvoker {
 			SOAPBody body = envelope.getBody();
 			body.addDocument(inputDom);
 			if (action != null) {
-				message.getMimeHeaders().setHeader(SOAP_ACTION, action);
+				message.getMimeHeaders().setHeader("SOAPAction", "\"" + action + "\"");
 			}
 			message.saveChanges();
-
-			log.debug("Request: " + getSOAPMessageAsString(message));
-
 			return message;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -98,6 +94,7 @@ public class WebServiceInvoker {
 			/*
 			 * get log response
 			 */
+			
 			logMsg.put(Constants.LOG_RESPONSE, getSOAPMessageAsString(reply));
 		} catch (SOAPException soapException) {
 
@@ -138,6 +135,7 @@ public class WebServiceInvoker {
 			Map<String, String> logMsg) throws SOAPException {
 
 		log.debug("Enter callSynServiceWithAuthentication Case 1");
+
 		SOAPMessage soapMessage = prepareSOAPMessage(action, message);
 
 		SOAPPart soapPart = soapMessage.getSOAPPart();
@@ -146,31 +144,32 @@ public class WebServiceInvoker {
 		SOAPHeader header = envelope.getHeader();
 
 		addSAMLToSOAPHeader(saml, header);
-
+		
+		soapMessage.saveChanges();
+		
 		SOAPConnectionFactory soapConnFactory = SOAPConnectionFactory
 				.newInstance();
+		
 		SOAPConnection connection = soapConnFactory.createConnection();
+		
 
 		log.debug("--------------------------requestXML----------------------------------");
 		log.debug(getSOAPMessageAsString(soapMessage));
 		log.debug("----------------------------------------------------------------------");
-
-		log.debug("------------------------------------");
-		log.debug("sent message to: " + destination);
-		log.debug("------------------------------------");
-
 		/*
 		 * get log request
 		 */
-		logMsg.put(Constants.LOG_REQUEST, getSOAPMessageAsString(soapMessage));
+		//logMsg.put(Constants.LOG_REQUEST, getSOAPMessageAsString(soapMessage));
 
 		SOAPMessage reply = null;
 		try {
+			log.debug("sent message to: " + destination);
+			
 			reply = connection.call(soapMessage, destination);
 			/*
 			 * get log response
 			 */
-			logMsg.put(Constants.LOG_RESPONSE, getSOAPMessageAsString(reply));
+			//logMsg.put(Constants.LOG_RESPONSE, getSOAPMessageAsString(reply));
 		} catch (SOAPException soapException) {
 			log.debug(soapException.getMessage());
 		}
@@ -178,7 +177,7 @@ public class WebServiceInvoker {
 		connection.close();
 
 		log.debug("--------------------------responseXML----------------------------------");
-		log.debug(getSOAPMessageAsString(reply));
+		//log.debug(getSOAPMessageAsString(reply));
 		log.debug("----------------------------------------------------------------------");
 		log.debug("Exit callSynServiceWithAuthentication Case1 OK");
 		return reply;
