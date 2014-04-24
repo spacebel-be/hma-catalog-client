@@ -1,0 +1,1 @@
+cmd /k d:\sdk\setenv-jdk17.bat

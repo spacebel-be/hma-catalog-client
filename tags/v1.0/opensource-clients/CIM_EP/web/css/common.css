@@ -1,0 +1,152 @@
+
+body {
+	/*text-align: center;*/
+	font: 10px Verdana;
+	color: #000;
+	background-color: #FFFFFF;
+	padding: 0px 40px 40px;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #647380;
+	text-decoration: underline;
+}
+
+img {
+    border: 0 none;
+}
+
+/*______________________________________________________________________________
+ *
+ *  Page header / banner
+ *
+ */
+
+#banner {
+    background-image:url(../images/bannerbg.jpg);
+	color: #fff;
+	margin: 0 0 1px;
+	text-align: left;
+}
+#banner .logo a {
+    background: url(../images/banner.jpg) no-repeat scroll 0 0 transparent;
+    display: block;
+    font-size: 0;
+    height: 100px;
+    text-indent: -9999em;
+    width: 750px;
+}
+
+#banner .nologo {
+}
+
+#banner h1.nologo {
+	margin: 0;
+	padding: 0 0 5px;
+}
+
+#banner .nologo a {
+	font-size: 160%;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#banner .nologo a:hover {
+	text-decoration: none;
+}
+
+#banner p {
+	font-size: 120%;
+	font-weight: bold;
+	color: #221100;
+}
+
+#navbar {
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    z-index: 100;
+}
+
+#content-wrapper  {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #565656;
+}
+
+legend  {
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+.selected-service{
+	width:100px;
+	color: #565656;
+	font-weight: bold;
+}
+
+.service-name {
+    float: left;
+    font-size: 110%;
+    font-weight: bold;
+	color: #565656;
+}
+
+.cc-msg-success {
+    background: url("../images/success.png") no-repeat scroll 6px 50% #F4FDEF;
+    border: 1px solid #ACDFA7;
+    color: #384F34;
+    display: block;
+    font-weight: bold;
+    margin: 2px auto 14px;
+    padding: 6px 6px 6px 30px;
+    text-align: left;
+}
+
+/* ---------- Error messages ---------- */
+
+.portlet-msg-error {
+	background: #FDD url(../images/messages/error.png) no-repeat 6px 50%;
+	border: 1px solid #F00;
+	display: block;
+	font-weight: bold;
+	margin: 2px auto 14px;
+	padding: 6px 6px 6px 30px;
+	text-align: left;
+}
+
+/* ---------- Warning messages ---------- */
+
+.portlet-msg-alert {
+	background: #FFC url(../images/messages/alert.png) no-repeat 6px 20%;
+	border: 1px solid #FC0;
+	display: block;
+	font-weight: bold;
+	margin: 2px auto 14px;
+	padding: 6px 6px 6px 30px;
+	text-align: left;
+}
+
+/* ---------- Success messages ---------- */
+
+.portlet-msg-success {
+	background: #F4FDEF url(../images/messages/success.png) no-repeat 6px 50%;
+	border: 1px solid #ACDFA7;
+	color: #384F34;
+	display: block;
+	font-weight: bold;
+	margin: 2px auto 14px;
+	padding: 6px 6px 6px 30px;
+	text-align: left;
+}

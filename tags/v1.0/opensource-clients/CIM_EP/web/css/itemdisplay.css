@@ -1,0 +1,16 @@
+.itemdisplay td{
+	vertical-align: top;
+}
+
+
+.itemdisplay .link {
+	font-weight: bold;
+}
+
+.itemdisplay .image {
+	margin-right: 10px;
+}
+
+.itemdisplay {
+	margin-bottom: 10px;
+}

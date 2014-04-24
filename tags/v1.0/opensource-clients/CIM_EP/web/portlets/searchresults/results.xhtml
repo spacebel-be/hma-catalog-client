@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spb="http://www.spacebel.be/genesis/jsf"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<spb:ajaxActivity />
+
+	<a4j:loadStyle src="/js/jqplot/jquery.jqplot.css" />
+	<a4j:loadScript src="/js/jqplot/excanvas.min.js" rendered="false"/>
+	<a4j:loadScript src="/js/jqplot/jquery.jqplot.js" />
+	<a4j:loadScript src="/js/jqplot/jqplot.init.js" />
+	<a4j:loadScript src="/js/jqplot/plugins/jqplot.barRenderer.js" />
+	<a4j:loadScript src="/js/jqplot/plugins/jqplot.dateAxisRenderer.min.js" />
+	<a4j:loadScript src="/js/jqplot/plugins/jqplot.highlighter.min.js" />
+	<a4j:loadScript src="/js/jqplot/plugins/jqplot.cursor.min.js" />
+	<a4j:loadScript
+		src="/js/jqplot/plugins/jqplot.canvasTextRenderer.min.js" />
+	<a4j:loadScript
+		src="/js/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js" />	
+		
+	<script type="text/javascript">
+		function showSearchLogMessage(){
+			#{rich:component('search-log-msg-panel')}.show();
+		}
+	</script>	
+	
+	
+	<a4j:outputPanel layout="block" id="requestResult-panel">
+		<c:set var="collection" value="#{serviceBean.resultSet}" />		
+		<c:set var="context" value="searchOutput" />
+
+		<c:if test="#{not empty collection.attributes.untouched}">
+			<ui:include src="#{serviceBean.resultsFaceletPath}" />
+		</c:if>
+
+		<c:if test="#{empty collection.attributes.untouched}">
+			<a4j:outputPanel layout="block">
+				<table width="100%">
+					<tr>
+						<td style="float: right">							
+							<a href="javascript:void(0)" title="Display the last catalog request / response"
+								onclick="showSearchLogMessage()">
+								<a4j:outputPanel rendered="#{not empty serviceBean.searchLogMsg}">
+									<h:graphicImage value="/images/icons/bug_error.png" />
+									<rich:spacer width="5px" />
+									<h:outputText value="Request / Response" />
+								</a4j:outputPanel>
+							</a>							
+							<br/>
+						</td>
+					</tr>				
+				</table>				
+											
+				<c:if test="${empty collection.attributes.noscroller}">										
+					<spb:scroller />
+				</c:if>				
+				<rich:modalPanel id="search-log-msg-panel" width="1050" height="600" domElementAttachment="parent" style="z-index:100000;background-color: #FFFFFF;text-align: left;" styleClass="present-modal-panel">					
+					<f:facet name="header">
+						<h:panelGroup>
+							<h:outputText value="Request / Response" style="color: #000000"/>
+						</h:panelGroup>
+					</f:facet>	
+					<f:facet name="controls">
+						<h:panelGroup style="margin: 2px 2px; cursor:pointer;">
+							<h:graphicImage value="/images/close.png" id="search-log-msg-hidelink" />
+							<rich:componentControl for="search-log-msg-panel" attachTo="search-log-msg-hidelink" operation="hide" event="onclick" />
+						</h:panelGroup>
+					</f:facet>
+					<a4j:outputPanel rendered="#{not empty serviceBean.searchLogMsg}" layout="block"
+						style="display: inline-block; width: 100%;">
+						<rich:panel styleClass="log-detail" style="float: left; width:350px">
+							<f:facet name="header">
+								<h:outputText value="Request" style="color: #000000"/>
+							</f:facet>
+							<rich:insert highlight="xml"
+								content="#{serviceBean.searchLogMsg['logRequestMsg']}" />
+						</rich:panel>
+
+						<rich:panel styleClass="log-detail" style="float: right; width:650px">
+							<f:facet name="header">
+								<h:outputText value="Response" style="color: #000000"/>
+							</f:facet>
+							<rich:insert highlight="xml"
+								content="#{serviceBean.searchLogMsg['logResponseMsg']}" />
+						</rich:panel>
+					</a4j:outputPanel>
+					
+				</rich:modalPanel>				
+				
+				<ui:include src="#{serviceBean.resultsFaceletPath}" />
+				<div style="display: none" id="collectionIdsDiv">collectionIdsDiv</div>
+			</a4j:outputPanel>
+		</c:if>
+	</a4j:outputPanel>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gsc="http://earth.esa.int/gsc" xmlns:sru="http://a9.com/-/opensearch/extensions/sru/2.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:atm="http://earth.esa.int/atm" xmlns:time="http://a9.com/-/opensearch/extensions/time/1.0/" xmlns:atm2="http://www.opengis.net/atm/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:gml32="http://www.opengis.net/gml/3.2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:eop="http://www.genesi-dr.eu/spec/opensearch/extensions/eop/1.0/" xmlns:opt="http://earth.esa.int/opt" xmlns:opt2="http://www.opengis.net/opt/2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/" xmlns:geo="http://a9.com/-/opensearch/extensions/geo/1.0/" xmlns:dclite4g="http://xmlns.com/2008/dclite4g#" xmlns:ws="http://dclite4g.xmlns.com/ws.rdf#" xmlns:eop2="http://www.opengis.net/eop/2.0" xmlns:sar2="http://www.opengis.net/sar/2.0" xmlns:bsi="http://ngeo.eo.esa.int/schema/browse/ingestion" xmlns:dct="http://purl.org/dc/terms/" xmlns:sar="http://earth.esa.int/sar" xmlns:gml="http://www.opengis.net/gml" xmlns:xdt="http://www.w3.org/2005/02/xpath-datatypes" xmlns:ical="http://www.w3.org/2002/12/cal/ical#" xmlns:rep="http://ngeo.eo.esa.int/schema/browseReport" xmlns:param="http://a9.com/-/spec/opensearch/extensions/parameters/1.0/"
+xmlns:eo="http://a9.com/-/opensearch/extensions/eo/1.0/">
+	<ShortName>openCaralogue</ShortName>
+	<LongName>Earth Observation Catalogue</LongName>
+	<Description>This OpenSearch Service allows the discovery of Earth Observation data. This search service is in accordance with the OGC 10-032r3 specification. </Description>
+	<Tags>ESA, Earth Observation, Digital Repository, Digital Earth Communities</Tags>
+	<Contact>openCatalogue@intecs.it</Contact>
+	<Query geo:box="-25,30,45,70" role="example"/>
+	<Developer>Intecs team</Developer>
+	<Attribution>Intecs</Attribution>
+	<SyndicationRight>open</SyndicationRight>
+	<AdultContent>false</AdultContent>
+	<Language>en-us</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Url indexOffset="1" pageOffset="1" template="http://2.228.120.225/eoos/service/opensearch/description.xml/atom/?q={searchTerm}&amp;count={count}&amp;startIndex={startIndex?}&amp;startPage={startPage?}&amp;bbox={geo:box?}&amp;geom={geo:geometry?}&amp;id={geo:uid?}&amp;lat={geo:lat?}&amp;lon={geo:lon?}&amp;radius={geo:radius?}&amp;rel={geo:relation?}&amp;loc={geo:name?}&amp;startdate={time:start?}&amp;stopdate={time:end?}&amp;trel={time:relation?}&amp;pid={eo:parentIdentifier?}&amp;psn={eo:platformShortName?}&amp;psi={eo:platformSerialIdentifier?}&amp;ot={eo:orbitType?}&amp;isn={eo:instrumentShortName?}&amp;st={eo:sensorType?}&amp;som={eo:sensorMode?}&amp;si={eo:swathIdentifier?}" type="application/atom+xml">
+		<param:Parameter name="parentIdentifier" value="{eo:parentIdentifier}" minimum="0" title="Parent Identifier">
+			<param:Option value="ASA_IMM_1P" label="ASA_IMM_1P"/>
+			<param:Option value="MER_FRS_1P" label="MER_FRS_1P"/>
+		</param:Parameter>
+		<param:Parameter name="relation" value="{geo:relation}" minimum="0" title="Spatial Relation">
+			<param:Option value="intersects" label="Intersects"/>
+			<param:Option value="contains" label="Contains"/>
+			<param:Option value="disjoint" label="Disjoint"/>
+		</param:Parameter>
+		<param:Parameter name="relation" value="{time:relation}" minimum="0" title="Temporal Relation">
+			<param:Option value="intersects" label="Intersects"/>
+			<param:Option value="contains" label="Contains"/>
+			<param:Option value="during" label="During"/>
+			<param:Option value="disjoint" label="Disjoint"/>			
+		</param:Parameter>
+		<param:Parameter name="sensorType" value="{eo:sensorType}" minimum="0" title="Sensor Type">
+			<param:Option value="OPTICAL" label="OPTICAL"/>
+			<param:Option value="RADAR" label="RADAR"/>
+			<param:Option value="ALTIMETRIC" label="ALTIMETRIC"/>
+			<param:Option value="ATMOSPHERIC" label="ATMOSPHERIC"/>
+			<param:Option value="LIMB" label="LIMB"/>
+		</param:Parameter>
+	</Url>
+</OpenSearchDescription>
