@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.spacebel.be/catalogue/client">	
+	<service>
+		<id>1</id>
+		<name>EOP Catalogue (Task 3)</name>
+		<icd>ogc-13-026</icd>
+		<opensearch>
+			<descriptionDocumentURL>http://localhost/catalogueClient/data/eop-osdd.xml</descriptionDocumentURL>
+			<responseFormat>application/atom+xml</responseFormat>
+			<removeEmptyParams>true</removeEmptyParams>
+		</opensearch>
+		<operation name="Search">
+			<xsl>eop_OpenSearch_Search.XSL</xsl>
+		</operation>
+		<aoiRequired>false</aoiRequired>
+	</service>
+	<service>
+		<id>2</id>
+		<name>EOP O&amp;M Catalogue (Task 3)</name>
+		<icd>ogc-13-026</icd>
+		<opensearch>
+			<descriptionDocumentURL>http://localhost/catalogueClient/data/eop-om-osdd.xml</descriptionDocumentURL>
+			<responseFormat>application/atom+xml</responseFormat>
+			<removeEmptyParams>true</removeEmptyParams>
+		</opensearch>
+		<operation name="Search">
+			<xsl>eop_OpenSearch_Search.XSL</xsl>
+		</operation>
+		<aoiRequired>false</aoiRequired>
+	</service>
+	<service>
+		<id>3</id>
+		<name>FEDEO Catalogue (Task 3)</name>
+		<icd>ogc-13-026</icd>
+		<opensearch>
+			<descriptionDocumentURL>http://localhost/catalogueClient/data/fedeo-osdd.xml</descriptionDocumentURL>
+			<responseFormat>application/atom+xml</responseFormat>
+			<removeEmptyParams>true</removeEmptyParams>
+		</opensearch>
+		<operation name="Search">
+			<xsl>eop_OpenSearch_Search.XSL</xsl>
+		</operation>
+		<aoiRequired>false</aoiRequired>
+	</service>
+	<service>
+		<id>4</id>
+		<name>FEDEO O&amp;M Catalogue (Task 3)</name>
+		<icd>ogc-13-026</icd>
+		<opensearch>
+			<descriptionDocumentURL>http://localhost/catalogueClient/data/fedeo-om-osdd.xml</descriptionDocumentURL>
+			<responseFormat>application/atom+xml</responseFormat>
+			<removeEmptyParams>true</removeEmptyParams>
+		</opensearch>
+		<operation name="Search">
+			<xsl>eop_OpenSearch_Search.XSL</xsl>
+		</operation>
+		<aoiRequired>false</aoiRequired>
+	</service>
+	<service>
+		<id>5</id>
+		<name>I15 Catalogue (Task 5)</name>
+		<icd>ogc-13-084r1</icd>
+		<operation name="Search">
+			<xsl>I15_Catalogue_Search.XSL</xsl>
+			<binding>
+				<soap action="http://www.opengis.net/cat/csw/2.0.2/requests#GetRecords">http://ergo.pisa.intecs.it/i15/webservice/</soap>
+			</binding>			
+		</operation>
+		<operation name="Present">
+			<xsl>I15_Catalogue_Present.XSL</xsl>
+			<binding>
+				<httpget>http://ergo.pisa.intecs.it/i15/httpservice</httpget>
+			</binding>
+		</operation>			
+		<aoiRequired>false</aoiRequired>
+	</service>	
+	<service>
+		<id>6</id>
+		<name>I15 Bridge ISO AP (Task 5)</name>
+		<icd>ogc-13-084r1</icd>
+		<operation name="Search">
+			<xsl>I15_Catalogue_Search.XSL</xsl>
+			<binding>
+				<soap action="http://www.opengis.net/cat/csw/2.0.2/requests#GetRecords">http://46.51.189.235/inspiretm/cimep</soap>
+			</binding>			
+		</operation>
+		<operation name="Present">
+			<xsl>I15_Catalogue_Present.XSL</xsl>
+			<binding>
+				<httpget>http://46.51.189.235/inspiretm/cimep</httpget>
+			</binding>
+		</operation>			
+		<aoiRequired>false</aoiRequired>
+	</service>	
+	<service>
+		<id>7</id>
+		<name>CIM EP Catalogue (Task 2)</name>
+		<icd>ogc-07-038</icd>
+		<operation name="Search">
+			<xsl>CIM_EP_Catalogue_Search.XSL</xsl>
+			<binding>
+				<soap action="http://www.opengis.net/cat/csw/2.0.2/requests#GetRecords">http://hma-s.spacebel.be:8080/PEP/services/Secured-CIM-EP</soap>
+			</binding>			
+		</operation>
+		<operation name="Present">
+			<xsl>CIM_EP_Catalogue_Present.XSL</xsl>
+			<binding>
+				<httpget>http://hrt-11.pisa.intecs.it/hmas/httpservice</httpget>
+			</binding>
+		</operation>			
+		<aoiRequired>false</aoiRequired>
+	</service>
+</services>
