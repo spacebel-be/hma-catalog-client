@@ -1,0 +1,29 @@
+.tabletoggle {
+	width: 100%;
+	border: 1px solid lightgrey;
+	border-collapse: collapse;
+}
+
+.tabletoggle th {
+	font-size: 12px;
+}
+
+.tabletoggle .firstcolumn {
+	font-weight: bold;
+	white-space: nowrap;
+	padding-right: 15px;
+	padding-bottom: 2px;
+}
+
+.tabletoggle .secondcolumn {
+	width: 100%;
+	padding-bottom: 2px;
+}
+
+.tabletoggle .spb-toggleTable-section {
+	cursor: pointer;
+}
+
+.tabletoggle .spb-toggleTable-section-link {
+	text-decoration: underline;
+}

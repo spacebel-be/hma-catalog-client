@@ -1,0 +1,1 @@
+d:\sdk\eclipse-3.7\eclipse.exe -vm d:\sdk\jdk1.6.0_29\bin\javaw -data d:\sdk\workspace

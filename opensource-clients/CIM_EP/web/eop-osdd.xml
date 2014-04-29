@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gsc="http://earth.esa.int/gsc" xmlns:param="http://a9.com/-/spec/opensearch/extensions/parameters/1.0/" xmlns:sru="http://a9.com/-/opensearch/extensions/sru/2.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:atm="http://earth.esa.int/atm" xmlns:time="http://a9.com/-/opensearch/extensions/time/1.0/" xmlns:atm2="http://www.opengis.net/atm/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:gml32="http://www.opengis.net/gml/3.2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:eop="http://earth.esa.int/eop" xmlns:opt="http://earth.esa.int/opt" xmlns:opt2="http://www.opengis.net/opt/2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/" xmlns:geo="http://a9.com/-/opensearch/extensions/geo/1.0/" xmlns:dclite4g="http://xmlns.com/2008/dclite4g#" xmlns:ws="http://dclite4g.xmlns.com/ws.rdf#" xmlns:eop2="http://www.opengis.net/eop/2.0" xmlns:sar2="http://www.opengis.net/sar/2.0" xmlns:bsi="http://ngeo.eo.esa.int/schema/browse/ingestion" xmlns:dct="http://purl.org/dc/terms/" xmlns:sar="http://earth.esa.int/sar" xmlns:eo="http://a9.com/-/opensearch/extensions/eo/1.0/" xmlns:gml="http://www.opengis.net/gml" xmlns:xdt="http://www.w3.org/2005/02/xpath-datatypes" xmlns:ical="http://www.w3.org/2002/12/cal/ical#" xmlns:rep="http://ngeo.eo.esa.int/schema/browseReport">
+	<ShortName>openCaralogue</ShortName>
+	<LongName>Earth Observation Catalogue</LongName>
+	<Description>This OpenSearch Service allows the discovery of Earth Observation data. This search service is in accordance with the OGC 10-032r3 specification. </Description>
+	<Tags>ESA, Earth Observation, Digital Repository, Catalogue, OGC</Tags>
+	<Contact>openCatalogue@intecs.it</Contact>
+	<Image height="75" type="image/png" width="125">http://hma-s-catalogue.spacebel.be/openCatalogue/_include/img/profile/logo.png</Image>
+	<Image height="16" type="image/vnd.microsoft.icon" width="16">http://hma-s-catalogue.spacebel.be/openCatalogue/favicon.ico</Image>
+	<Query geo:box="-25,30,45,70" role="example"/>
+	<Developer>Intecs team</Developer>
+	<Attribution>Intecs</Attribution>
+	<SyndicationRight>open</SyndicationRight>
+	<AdultContent>false</AdultContent>
+	<Language>en-us</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Url indexOffset="1" pageOffset="1" template="http://hma-s-catalogue.spacebel.be/openCatalogue/service/opensearch/atom/?q={searchTerm}&amp;count={count}&amp;startIndex={startIndex?}&amp;startPage={startPage?}&amp;bbox={geo:box?}&amp;geom={geo:geometry?}&amp;id={geo:uid?}&amp;lat={geo:lat?}&amp;lon={geo:lon?}&amp;radius={geo:radius?}&amp;rel={geo:relation?}&amp;loc={geo:name?}&amp;startdate={time:start?}&amp;stopdate={time:end?}&amp;trel={time:relation?}&amp;productType={eo:productType?}&amp;platformShortName={eo:platformShortName?}&amp;instrument={eo:instrument?}&amp;sensorType={eo:sensorType?}&amp;parentIdentifier={eo:parentIdentifier?}&amp;productionStatus={eo:productionStatus?}&amp;acquisitionType={eo:acquisitionType?}&amp;orbitDirection={eo:orbitDirection?}&amp;swathIdentifier={eo:swathIdentifier?}&amp;processingCenter={eo:processingCenter?}&amp;sensorMode={eo:sensorMode?}&amp;processingMode={eo:processingMode?}&amp;acquisitionStation={eo:acquisitionStation?}&amp;acquisitionSubType={eo:acquisitionSubType?}&amp;polarisationMode={eo:polarisationMode?}&amp;polarisationChannels={eo:polarisationChannels?}&amp;recordSchema=om" type="application/atom+xml"/>
+	<param:Parameter maxExclusive="2013-06-19T07:25:13Z" minInclusive="1982-08-22T07:43:16Z" minimum="0" name="beginPosition" value="{time:start}"/>
+	<param:Parameter maxExclusive="2013-06-19T07:25:13Z" minInclusive="1982-08-22T07:51:52Z" minimum="0" name="endPosition" value="{time:end}"/>
+	<param:Parameter maxExclusive="142739.0" minInclusive="537.0" minimum="0" name="orbitNumber" value="{eo:orbitNumber}"/>
+	<param:Parameter maxExclusive="XX" minInclusive="FR" minimum="0" name="acquisitionStation" value="{eo:acquisitionStation}"/>
+	<param:Parameter maxExclusive="142739.0" minInclusive="537.0" minimum="0" name="orbitNumber" value="{eo:orbitNumber}"/>
+	<param:Parameter maxExclusive="708.0" minInclusive="2.0" minimum="0" name="track" value="{eo:track}"/>
+	<param:Parameter maxExclusive="7190.0" minInclusive="0.0" minimum="0" name="frame" value="{eo:frame}"/>
+	<param:Parameter maxExclusive="99.77" minInclusive="0.0" minimum="0" name="cloudCover" value="{eo:cloudCover}"/>
+	<param:Parameter maxExclusive="2013-01-16T09:29:01Z" minInclusive="2000-02-19T06:40:55Z" minimum="0" name="processingDate" value="{eo:processingDate}"/>
+	<param:Parameter maxExclusive="153.97945885" minInclusive="43.60881496" minimum="0" name="illuminationAzimuthAngle" value="{eo:illuminationAzimuthAngle}"/>
+	<param:Parameter maxExclusive="59.55712161" minInclusive="18.27831252" minimum="0" name="illuminationElevationAngle" value="{eo:illuminationElevationAngle}"/>
+	<param:Parameter minimum="0" name="productType"  value="{eo:productType}">
+		<param:Option label="MER_FRS_1P" value="MER_FRS_1P"/>
+		<param:Option label="PSR_P.0" value="PSR_P.0"/>
+		<param:Option label="OPTICAL" value="OPTICAL"/>
+		<param:Option label="PSR_FD.0" value="PSR_FD.0"/>
+		<param:Option label="PSR_FH.0" value="PSR_FH.0"/>
+		<param:Option label="ENVISAT-MERIS data for the DREAM project" value="ENVISAT-MERIS data for the DREAM project"/>
+		<param:Option label="SAR data for the DREAM project" value="SAR data for the DREAM project"/>
+		<param:Option label="MER_FR__0P" value="MER_FR__0P"/>
+		<param:Option label="TM__TM__0P" value="TM__TM__0P"/>
+		<param:Option label="PSR_SL.0" value="PSR_SL.0"/>
+		<param:Option label="MSS_MSS_0P" value="MSS_MSS_0P"/>
+		<param:Option label="MER_FRS_2P" value="MER_FRS_2P"/>
+		<param:Option label="ASA_WS__0P" value="ASA_WS__0P"/>
+		<param:Option label="ASA_WSM_1P" value="ASA_WSM_1P"/>
+		<param:Option label="ASA_WS__BP" value="ASA_WS__BP"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="platformShortName"  value="{eo:platformShortName}">
+		<param:Option label="ENVISAT" value="ENVISAT"/>
+		<param:Option label="ALOS" value="ALOS"/>
+		<param:Option label="SPOT" value="SPOT"/>
+		<param:Option label="Landsat" value="Landsat"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="instrument"  value="{eo:instrument}">
+		<param:Option label="MERIS" value="MERIS"/>
+		<param:Option label="PALSAR" value="PALSAR"/>
+		<param:Option label="HRVIR1" value="HRVIR1"/>
+		<param:Option label="ASAR" value="ASAR"/>
+		<param:Option label="HRVIR" value="HRVIR"/>
+		<param:Option label="HRVIR2" value="HRVIR2"/>
+		<param:Option label="TM" value="TM"/>
+		<param:Option label="MSS" value="MSS"/>
+		<param:Option label="ASAR/WS" value="ASAR/WS"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="sensorType"  value="{eo:sensorType}">
+		<param:Option label="RADAR" value="RADAR"/>
+		<param:Option label="OPTICAL" value="OPTICAL"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="parentIdentifier"  value="{eo:parentIdentifier}">
+		<param:Option label="ENVISAT_MERIS.FR" value="ENVISAT_MERIS.FR"/>
+		<param:Option label="ALOS_PALSAR.P" value="ALOS_PALSAR.P"/>
+		<param:Option label="SENTINEL2_L1C_N2A" value="SENTINEL2_L1C_N2A"/>
+		<param:Option label="ALOS_PALSAR.FD" value="ALOS_PALSAR.FD"/>
+		<param:Option label="ALOS_PALSAR.FH" value="ALOS_PALSAR.FH"/>
+		<param:Option label="MER_FRS_1P" value="MER_FRS_1P"/>
+		<param:Option label="ASA_IMM_1P" value="ASA_IMM_1P"/>
+		<param:Option label="MER_FR__1P" value="MER_FR__1P"/>
+		<param:Option label="LANDSAT5_TM" value="LANDSAT5_TM"/>
+		<param:Option label="ALOS_PALSAR.SL" value="ALOS_PALSAR.SL"/>
+		<param:Option label="LANDSAT4_MSS" value="LANDSAT4_MSS"/>
+		<param:Option label="ENVISAT_ASAR.WS" value="ENVISAT_ASAR.WS"/>
+		<param:Option label="LANDSAT5_MSS" value="LANDSAT5_MSS"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="productionStatus"  value="{eo:productionStatus}">
+		<param:Option label="ARCHIVED" value="ARCHIVED"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="acquisitionType"  value="{eo:acquisitionType}">
+		<param:Option label="NOMINAL" value="NOMINAL"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="orbitDirection"  value="{eo:orbitDirection}">
+		<param:Option label="1" value="1"/>
+		<param:Option label="0" value="0"/>
+		<param:Option label="DESCENDING" value="DESCENDING"/>
+		<param:Option label="ASCENDING" value="ASCENDING"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="swathIdentifier"  value="{eo:swathIdentifier}">
+		<param:Option label="IS2" value="IS2"/>
+		<param:Option label="P23.1" value="P23.1"/>
+		<param:Option label="P21.5" value="P21.5"/>
+		<param:Option label="IS6" value="IS6"/>
+		<param:Option label="41.5" value="41.5"/>
+		<param:Option label="SCAN5" value="SCAN5"/>
+		<param:Option label="IS3" value="IS3"/>
+		<param:Option label="WS" value="WS"/>
+		<param:Option label="38.8" value="38.8"/>
+		<param:Option label="21.5" value="21.5"/>
+		<param:Option label="IS1" value="IS1"/>
+		<param:Option label="IS5" value="IS5"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="processingCenter"  value="{eo:processingCenter}">
+		<param:Option label="EPA" value="EPA"/>
+		<param:Option label="PDHS-E" value="PDHS-E"/>
+		<param:Option label="UK-PAC" value="UK-PAC"/>
+		<param:Option label="PDHS-K" value="PDHS-K"/>
+		<param:Option label="KSS" value="KSS"/>
+		<param:Option label="ESR" value="ESR"/>
+		<param:Option label="I-PAC" value="I-PAC"/>
+		<param:Option label="E-PAC" value="E-PAC"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="sensorMode"  value="{eo:sensorMode}">
+		<param:Option label="FR" value="FR"/>
+		<param:Option label="NA" value="NA"/>
+		<param:Option label="PLR" value="PLR"/>
+		<param:Option label="FBD" value="FBD"/>
+		<param:Option label="FBS" value="FBS"/>
+		<param:Option label="?" value="?"/>
+		<param:Option label="WB1" value="WB1"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="processingMode"  value="{eo:processingMode}">
+		<param:Option label="N" value="N"/>
+		<param:Option label="NOMINAL" value="NOMINAL"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="acquisitionStation"  value="{eo:acquisitionStation}">
+		<param:Option label="HA" value="HA"/>
+		<param:Option label="FR" value="FR"/>
+		<param:Option label="KS" value="KS"/>
+		<param:Option label="PDHS-E" value="PDHS-E"/>
+		<param:Option label="SV" value="SV"/>
+		<param:Option label="MA" value="MA"/>
+		<param:Option label="PA" value="PA"/>
+		<param:Option label="GT" value="GT"/>
+		<param:Option label="PDHS-K" value="PDHS-K"/>
+		<param:Option label="PDAS-F" value="PDAS-F"/>
+		<param:Option label="TJ" value="TJ"/>
+		<param:Option label="FS" value="FS"/>
+		<param:Option label="MS" value="MS"/>
+		<param:Option label="TS" value="TS"/>
+		<param:Option label="PDAS-M" value="PDAS-M"/>
+		<param:Option label="PDHSE" value="PDHSE"/>
+		<param:Option label="XX" value="XX"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="acquisitionSubType"  value="{eo:acquisitionSubType}">
+		<param:Option label="DEFAULT" value="DEFAULT"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="polarisationMode"  value="{eo:polarisationMode}">
+		<param:Option label="HH/HV/VV/VH" value="HH/HV/VV/VH"/>
+		<param:Option label="HH" value="HH"/>
+		<param:Option label="HH/HV" value="HH/HV"/>
+		<param:Option label="S" value="S"/>
+	</param:Parameter>
+	<param:Parameter minimum="0" name="polarisationChannels"  value="{eo:polarisationChannels}">
+		<param:Option label="VV" value="VV"/>
+		<param:Option label="HH" value="HH"/>
+	</param:Parameter>
+</OpenSearchDescription>

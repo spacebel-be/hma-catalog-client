@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:rich="http://richfaces.org/rich" xmlns:c="http://java.sun.com/jstl/core" xmlns:spb="http://www.spacebel.be/genesis/jsf" xmlns:a4j="http://richfaces.org/a4j" xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition>
+		<spb:toggleTable>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Identification Information">
+				<spb:toggleTableElement>
+					<h:outputText value="Id" rendered="#{not empty presentItem.properties['id'].value}"/>
+					<h:outputText value="#{presentItem.properties['id'].value}" rendered="#{not empty presentItem.properties['id'].value}"/>
+					<!--
+					<a4j:outputPanel layout="none">
+						<h:outputText value="#{presentItem.properties['id'].value}" />
+						<spb:companyLogo styleClass="company-logo-present" collectionId="#{presentItem.properties['id'].value}" />
+					</a4j:outputPanel>
+					-->
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Identifier" rendered="#{not empty presentItem.properties['Identifier'].value}"/>
+					<h:outputText value="#{presentItem.properties['Identifier'].value}" rendered="#{not empty presentItem.properties['Identifier'].value}"/>
+					<!--
+					<a4j:outputPanel layout="none" >
+						<h:outputText value="#{presentItem.properties['Identifier'].value}" />
+						<spb:companyLogo styleClass="company-logo-present" collectionId="#{presentItem.properties['Identifier'].value}" />
+					</a4j:outputPanel>
+					-->
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Title" />
+					<h:outputText value="#{presentItem.properties['Title'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Abstract" />
+					<h:outputText value="#{presentItem.properties['Abstract'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Topic Category" />
+					<h:outputText value="#{presentItem.properties['TopicCategory'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Created" />
+					<h:outputText value="#{presentItem.properties['Created'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Language" />
+					<h:outputText value="#{presentItem.properties['Language'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Dataset Language" />
+					<h:outputText value="#{presentItem.properties['DatasetLanguage'].value}" />
+				</spb:toggleTableElement>
+				<a4j:outputPanel layout="none" rendered="#{not empty presentItem.properties['TransferOptions']}">
+					<spb:toggleTableElement>
+						<ui:repeat var="group" value="#{presentItem.properties['TransferOptions'].groups}">
+							<spb:toggleTableElement>
+								<h:outputText value="Online Resource" />
+								<a href="#{group['OnlineResource'].value}" target="_blank">#{group['OnlineResource'].value}</a>
+							</spb:toggleTableElement>
+						</ui:repeat>																
+					</spb:toggleTableElement>
+				</a4j:outputPanel>
+				<spb:toggleTableElement rendered="#{not empty presentItem.properties['KeywordGroup'].groups}">
+					<h:outputText value="Keywords" />
+					<a4j:outputPanel layout="block">
+						<rich:dataTable style="width: 100%" rowKeyVar="key" value="#{presentItem.properties['KeywordGroup'].groups}" var="group">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Name" />
+								</f:facet>
+								<a4j:outputPanel layout="none">
+									<h:outputText value="#{group['Keyword'].value}" />
+								</a4j:outputPanel>								
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Type" />
+								</f:facet>
+								<h:outputText value="#{group['KeywordType'].value}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Thesaurus" />
+								</f:facet>
+								<a4j:outputPanel layout="none">
+									<h:outputText value="#{group['ThesaurusName'].value}" />
+								</a4j:outputPanel>
+							</rich:column>							
+						</rich:dataTable>
+					</a4j:outputPanel>
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="General Information">
+				<spb:toggleTableElement>
+					<h:outputText value="Timestamp" />
+					<h:outputText value="#{presentItem.properties['Timestamp'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Metadata Standard Name" />
+					<h:outputText value="#{presentItem.properties['MetadataStandardName'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Metadata Standard Version" />
+					<h:outputText value="#{presentItem.properties['MetadataStandardVersion'].value}" />
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Contacts">
+				<spb:toggleTableElement>
+					<h:outputText value="Individual Name" />
+					<h:outputText value="#{presentItem.properties['IndividualName'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Organisation Name" />
+					<h:outputText value="#{presentItem.properties['pointOfContact-OrganisationName'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Delivery Point" />
+					<h:outputText value="#{presentItem.properties['DeliveryPoint'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="City" />
+					<h:outputText value="#{presentItem.properties['pointOfContact-City'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Postal Code" />
+					<h:outputText value="#{presentItem.properties['pointOfContact-PostalCode'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Country" />
+					<h:outputText value="#{presentItem.properties['pointOfContact-Country'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Role" />
+					<h:outputText value="#{presentItem.properties['Role'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Organisation Name" />
+					<h:outputText value="#{presentItem.properties['OrganisationName'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Position name" />
+					<h:outputText value="#{presentItem.properties['PositionName'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="E-mail" />
+					<h:outputText value="#{presentItem.properties['ElectronicMail'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Tel" />
+					<h:outputText value="#{presentItem.properties['Voice'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Fax" />
+					<h:outputText value="#{presentItem.properties['Facsimile'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="City" />
+					<h:outputText value="#{presentItem.properties['City'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="PostalCode" />
+					<h:outputText value="#{presentItem.properties['PostalCode'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Country" />
+					<h:outputText value="#{presentItem.properties['Country'].value}" />
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Constraints Information">
+				<spb:toggleTableElement>
+					<h:outputText value="Use Limitation Constraints" />
+					<h:outputText value="#{presentItem.properties['LimitationConstraints'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Access Constraints" />
+					<h:outputText value="#{presentItem.properties['AccessConstraints'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Other Constraints" />
+					<h:outputText value="#{presentItem.properties['OtherConstraints'].value}" />
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Resource Information">
+				<spb:toggleTableElement>
+					<h:outputText value="FileIdentifier" />
+					<h:outputText value="#{presentItem.properties['FileIdentifier'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Hierarchy Level" />
+					<h:outputText value="#{presentItem.properties['HierarchyLevel'].value}" />
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Related Service Information" rendered="#{presentItem.properties['DataType'].value == 'Collection'  and not empty presentItem.properties['RealtedServiceGroup']}">
+				<ui:repeat var="group" value="#{presentItem.properties['RealtedServiceGroup'].groups}">
+					<spb:toggleTableElement>
+						<h:outputText value="Service Name" />
+						<spb:presentLink productId="#{group['ServiceId'].value}" link="true" label="#{group['ServiceName'].value}" collectionId="" />
+					</spb:toggleTableElement>
+				</ui:repeat>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Instruments" rendered="#{not empty presentItem.properties['InstrumentsGroup']}">
+				<ui:repeat var="group" value="#{presentItem.properties['InstrumentsGroup'].groups}">
+					<spb:toggleTableElement>
+						<h:outputText value="Instrument" />
+						<spb:presentLink productId="#{group['Instrument'].value}" link="true" label="#{group['InstrumentLabel'].value}" collectionId="" presentType="ogc-09-163-v003-csw-v202-hm" />
+					</spb:toggleTableElement>
+				</ui:repeat>
+			</spb:toggleTableSection>
+			<!--
+			<spb:toggleTableSection opened="#{opened}" rendered="#{not empty presentItem.properties['ServiceType'].value}" styleClass="toggle-panel" label="Service Information">
+			-->
+			<spb:toggleTableSection opened="#{opened}" rendered="#{presentItem.properties['DataType'].value == 'Service'}" styleClass="toggle-panel" label="Service Information">
+				<spb:toggleTableElement>
+					<h:outputText value="Title" />
+					<h:outputText value="#{presentItem.properties['Title'].value}" />
+					<!--
+					<a4j:outputPanel>
+						<c:set var="activateServiceId" value="#{searchResultBean.getFirstServiceDataByURL(presentItem.properties['OperationsGroup'].groups, 'ConnectPoint.value').id}" />
+						<h:outputText value="#{presentItem.properties['Title'].value}" />
+						<a4j:outputPanel layout="none" rendered="#{not empty activateServiceId}">
+							<rich:spacer width="15px" />
+							<spb:serviceActivationButton onclick="if(typeof picklist != 'undefined') picklist.selectAll();" serviceId="#{searchResultBean.getFirstServiceDataByURL(presentItem.properties['OperationsGroup'].groups, 'ConnectPoint.value').id}" />
+						</a4j:outputPanel>
+					</a4j:outputPanel>
+					-->
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Service Type" />
+					<h:outputText value="#{presentItem.properties['ServiceType'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Coupling Type" />
+					<h:outputText value="#{presentItem.properties['CouplingType'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Version" />
+					<h:outputText value="#{presentItem.properties['Version'].value}" />
+				</spb:toggleTableElement>
+				<spb:toggleTableElement>
+					<h:outputText value="Operates On" />
+					<a4j:outputPanel>
+						<a4j:outputPanel layout="block" rendered="#{not empty presentItem.properties['OperatesOnGroup'].groups}">
+							<spb:pickList id="operates-on" name="checked_collections" size="8">
+								<ui:repeat var="group" value="#{presentItem.properties['OperatesOnGroup'].groups}">
+									<option value="#{group['collectionValue'].value}">
+										<h:outputText value="#{group['collection'].value}" />
+									</option>
+								</ui:repeat>
+							</spb:pickList>
+						</a4j:outputPanel>
+						<!--
+						<a4j:outputPanel layout="block" rendered="#{not empty presentItem.properties['OperatesOnGroup'].groups}">
+							<spb:presentLink productId="#{group['collectionId'].value}" link="select" label="Show Metadata" collectionId="">
+								<ui:repeat var="group" value="#{presentItem.properties['OperatesOnGroup'].groups}">
+									<option value="#{group['collectionId'].value}">
+										<h:outputText value="#{group['collection'].value}" />
+									</option>
+								</ui:repeat>
+							</spb:presentLink>
+						</a4j:outputPanel>
+						-->
+					</a4j:outputPanel>
+				</spb:toggleTableElement>
+				<spb:toggleTableElement rendered="#{not empty presentItem.properties['OperationsGroup'].groups}">
+					<h:outputText value="Operations" />
+					<a4j:outputPanel layout="block">
+						<rich:dataTable var="group" style="width: 100%" value="#{presentItem.properties['OperationsGroup'].groups}">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Operation Name" />
+								</f:facet>
+								<h:outputText value="#{group['OperationName'].value}" styleClass="present-value" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="DCP" />
+								</f:facet>
+								<h:outputText value="#{group['DCP'].value}" styleClass="present-value" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Connect Point" />
+								</f:facet>
+								<h:outputText value="#{group['ConnectPoint'].value}" styleClass="present-value" />
+							</rich:column>
+						</rich:dataTable>
+					</a4j:outputPanel>
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+			<spb:toggleTableSection opened="#{opened}" styleClass="toggle-panel" label="Data Quality Info" rendered="#{not empty presentItem.properties['QualityInfoGroup']}">
+				<spb:toggleTableElement>
+					<ui:repeat var="group" value="#{presentItem.properties['QualityInfoGroup'].groups}">
+						<spb:toggleTableElement>
+							<h:outputText value="CodeSpace" />
+							<h:outputText value="#{group['CodeSpace'].value}" />
+						</spb:toggleTableElement>
+						<spb:toggleTableElement>
+							<h:outputText value="Title" />
+							<h:outputText value="#{group['Title'].value}" />
+						</spb:toggleTableElement>
+						<spb:toggleTableElement>
+							<h:outputText value="Explanation" />
+							<h:outputText value="#{group['Explanation'].value}" />
+						</spb:toggleTableElement>
+						<spb:toggleTableElement>
+							<h:outputText value="Pass" />
+							<h:outputText value="#{group['Pass'].value}" />
+						</spb:toggleTableElement>
+					</ui:repeat>
+				</spb:toggleTableElement>
+			</spb:toggleTableSection>
+		</spb:toggleTable>
+	</ui:composition>
+</html>

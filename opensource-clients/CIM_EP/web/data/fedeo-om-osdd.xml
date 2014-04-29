@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:geo="http://a9.com/-/opensearch/extensions/geo/1.0/" xmlns:time="http://a9.com/-/opensearch/extensions/time/1.0/" xmlns:eo="http://a9.com/-/opensearch/extensions/eo/1.0/" xmlns:param="http://a9.com/-/spec/opensearch/extensions/parameters/1.0/" xmlns:sru="http://a9.com/-/opensearch/extensions/sru/2.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:semantic="http://a9.com/-/opensearch/extensions/semantic/1.0/">
+	<ShortName>FEDEO Clearinghouse</ShortName>
+	<LongName>Earth Observation Catalogue</LongName>
+	<Description>Provides access to Earth Observation product metadata from the GMES Contributing Missions. </Description>
+	<Url type="application/opensearchdescription+xml" rel="self" template="http://geo.spacebel.be:80/opensearch/description.xml"/>
+	<Url type="application/opensearchdescription+xml" rel="search" template="http://geo.spacebel.be:80/opensearch/description.xml?subject={dc:subject?}"/>
+	<!-- Url Templates for product search -->
+	<Url type="application/atom+xml" template="http://geo.spacebel.be:80/opensearch/request/?httpAccept=application/atom%2Bxml&amp;parentIdentifier={eo:parentIdentifier}&amp;subject={dc:subject?}&amp;query={searchTerms?}&amp;startRecord={startIndex?}&amp;maximumRecords={count?}&amp;startDate={time:start?}&amp;endDate={time:end?}&amp;bbox={geo:box?}&amp;name={geo:name?}&amp;lat={geo:lat?}&amp;lon={geo:lon?}&amp;radius={geo:radius?}&amp;uid={geo:uid?}&amp;productType={eo:productType?}&amp;platformShortName={eo:platformShortName?}&amp;platformSerialIdentifier={eo:platformSerialIdentifier?}&amp;instrument={eo:instrument?}&amp;sensorType={eo:sensorType?}&amp;compositeType={eo:compositeType?}&amp;processingLevel={eo:processingLevel?}&amp;orbitType={eo:orbitType?}&amp;resolution={eo:resolution?}&amp;productionStatus={eo:productionStatus?}&amp;acquisitionType={eo:acquisitionType?}&amp;orbitNumber={eo:orbitNumber?}&amp;orbitDirection={eo:orbitDirection?}&amp;track={eo:track?}&amp;frame={eo:frame?}&amp;swathIdentifier={eo:swathIdentifier?}&amp;cloudCover={eo:cloudCover?}&amp;snowCover={eo:snowCover?}&amp;acquisitionStation={eo:acquisitionStation?}&amp;imageQualityDegradation={eo:imageQualityDegradation?}&amp;processorName={eo:processorName?}&amp;sensorMode={eo:sensorMode?}&amp;archivingCenter={eo:archivingCenter?}&amp;acquisitionSubType={eo:acquisitionSubType?}&amp;startTimeFromAscendingNode={eo:startTimeFromAscendingNode?}&amp;completionTimeFromAscendingNode={eo:completionTimeFromAscendingNode?}&amp;illuminationAzimuthAngle={eo:illuminationAzimuthAngle?}&amp;illuminationElevationAngle={eo:illuminationElevationAngle?}&amp;polarisationMode={eo:polarisationMode?}&amp;polarisationChannels={eo:polarisationChannels?}&amp;antennaLookDirection={eo:antennaLookDirection?}&amp;minimumIncidenceAngle={eo:minimumIncidenceAngle?}&amp;maximumIncidenceAngle={eo:maximumIncidenceAngle?}&amp;dopplerFrequency={eo:dopplerFrequency?}&amp;incidenceAngleVariation={eo:incidenceAngleVariation?}&amp;type={dc:type?}&amp;title={dc:title?}&amp;stylesheet={sru:stylesheet?}&amp;recordSchema={sru:recordSchema?}">
+		<param:Parameter name="parentIdentifier" value="{eo:parentIdentifier}" minimum="0" title="Parent Identifier">
+			<!-- DAIL -->
+			<param:Option value="urn:ogc:def:EOP:SPOT:ALL" label="(DAIL) EOP:SPOT:ALL"/>
+			<param:Option value="urn:ogc:def:EOP:MDA-GSI:RSAT2_NRT" label="(DAIL) EOP:MDA-GSI:RSAT2_NRT"/>
+			<param:Option value="urn:ogc:def:EOP:EGEOS:EGEOS#IKONOS" label="(DAIL) EOP:EGEOS:EGEOS#IKONOS"/>
+			<param:Option value="urn:ogc:def:EOP:EUM:acronym:ASCxxx1A:satellite:M02:fileid:EO:EUM:DAT:METOP:ASCSZO1B" label="(DAIL) EOP:EUM:acronym:ASCxxx1A:satellite:M02:fileid:EO:EUM:DAT:METOP:ASCSZO1B"/>						
+			<!-- DLR -->
+			<param:Option value="urn:eop:DLR:EOWEB:IRS-P6.LISS-IV.P-MONO" label="(DLR) EOWEB:IRS-P6.LISS-IV.P-MONO"/>
+			<param:Option value="urn:eop:DLR:EOWEB:IRS-P6.LISS-III.P" label="(DLR) EOWEB:IRS-P6.LISS-III.P"/>
+			<!-- VITO -->
+			<param:Option value="575240da-5fbe-486e-bf69-80655d059ff4" label="(VITO) MERIS-S10"/>
+		</param:Parameter>
+		<param:Parameter name="sensorType" value="{eo:sensorType}" minimum="0" title="Sensor Type">
+			<param:Option value="OPTICAL" label="OPTICAL"/>
+			<param:Option value="RADAR" label="RADAR"/>
+			<param:Option value="ALTIMETRIC" label="ALTIMETRIC"/>
+			<param:Option value="ATMOSPHERIC" label="ATMOSPHERIC"/>
+			<param:Option value="LIMB" label="LIMB"/>
+		</param:Parameter>
+		<param:Parameter name="acquisitionType" value="{eo:acquisitionType}" minimum="0" title="Acquisition Type">
+			<param:Option value="NOMINAL" label="NOMINAL"/>
+			<param:Option value="CALIBRATION" label="CALIBRATION"/>
+			<param:Option value="OTHER" label="OTHER"/>
+		</param:Parameter>
+		<param:Parameter name="orbitDirection" value="{eo:orbitDirection}" minimum="0" title="Orbit Direction">
+			<param:Option value="ASCENDING" label="ASCENDING"/>
+			<param:Option value="DESCENDING" label="DESCENDING"/>
+		</param:Parameter>
+		<param:Parameter name="imageQualityDegradation" value="{eo:imageQualityDegradation}" minimum="0" title="Image Quality Degradation">
+			<param:Option value="NOMINAL" label="NOMINAL"/>
+			<param:Option value="DEGRADED" label="DEGRADED"/>
+		</param:Parameter>
+		<param:Parameter name="polarisationMode" value="{eo:polarisationMode}" minimum="0" title="Polarisation Mode">
+			<param:Option value="D" label="D"/>
+			<param:Option value="Q" label="Q"/>
+			<param:Option value="S" label="S"/>
+			<param:Option value="T" label="T"/>
+			<param:Option value="UNDEFINED" label="UNDEFINED"/>
+		</param:Parameter>
+		<param:Parameter name="antennaLookDirection" value="{eo:antennaLookDirection}" minimum="0" title="Antenna Look Direction">
+			<param:Option value="LEFT" label="LEFT"/>
+			<param:Option value="RIGHT" label="RIGHT"/>
+		</param:Parameter>
+	</Url>
+	<!--  Example Queries for product search -->
+	<Query role="example" eo:parentIdentifier="urn:ogc:def:EOP:MDA-GSI:RSAT2_SEGMENTS"/>
+	<Query role="example" eo:parentIdentifier="urn:ogc:def:EOP:DMI:Deimos-1_L1R"/>
+	<Query role="example" dc:subject="urn:ogc:def:EOP:DMCii:DMC_L1R"/>
+	<Query role="example" dc:subject="ER02_SAR_RAW_0P" searchTerms="california"/>
+	<Query role="example" eo:parentIdentifier="urn:ogc:def:EOP:MDA-GSI:RSAT2_SEGMENTS" geo:box="-74,17,-67,20.5"/>
+	<Query role="example" dc:subject="urn:ogc:def:EOP:MDA-GSI:RSAT2_SEGMENTS" geo:box="-74,17,-67,20.5" time:start="2010-01-01T00:00:00Z" time:end="2011-10-14T00:00:00Z"/>
+	<Query role="example" eo:parentIdentifier="urn:ogc:def:EOP:SPOT:MULTISPECTRAL_10m" time:start="2009-06-14T00:00:00Z" time:end="2009-06-14T05:00:00Z" eo:platformShortName="SPOT" eo:instrumentShortName="HRG-Nb2" eo:sensorType="OPTICAL"/>
+	<Tags>FEDEO, ESA, Earth Observation, Digital Repository, HMA, HMA-S, HMA-SE</Tags>
+	<Image height="64" width="64" type="image/png">http://geo.spacebel.be:80/opensearch/images/esa_favicon.ico</Image>
+	<Image height="16" width="16" type="image/vnd.microsoft.icon">http://geo.spacebel.be:80/opensearch/images/esa_favicon.ico</Image>
+	<Developer>Spacebel s.a.</Developer>
+	<Attribution>Copyright 2013, Spacebel s.a.</Attribution>
+	<SyndicationRight>open</SyndicationRight>
+	<AdultContent>false</AdultContent>
+	<Language>en-us</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

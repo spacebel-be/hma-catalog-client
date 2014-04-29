@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:spb="http://www.spacebel.be/genesis/jsf"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<a4j:outputPanel layout="none">
+
+		<script type="text/javascript">
+		function presentFunction(prod, col, type, serviceId, icd){
+			#{rich:component('present-panel')}.hide();
+			presentFunctionA4J(prod, col, type, serviceId, icd);
+		}
+		function showPresent(){
+			#{rich:component('present-panel')}.show();
+		}
+		</script>
+
+		<a4j:jsFunction name="presentFunctionA4J"
+			actionListener="#{serviceBean.storePresentSet}"
+			eventsQueue="presentlink" immediate="true"
+			reRender="present-output,requestResult" oncomplete="showPresent()">			
+			<f:param name="productId" value="#{productId}" />
+			<f:param name="collectionId" value="#{collectionId}" />
+			<f:param name="presentType" value="#{presentType}" />
+			<f:param name="serviceId" value="#{serviceId}" />
+			<f:param name="icd" value="#{icd}" />
+			<f:param name="beanAction" value="presentAction" />
+		</a4j:jsFunction>
+
+		<a4j:outputPanel layout="none">
+			<a4j:outputPanel layout="none"
+				rendered="#{empty link or link eq 'false'}">
+				<input type="button" class="button-image button-image-metadata"
+					value="#{empty label ? loc['searchinput.text.showmetadata'] : label}"
+					onclick="presentFunction('#{productId}','#{collectionId}', '#{presentType}', '#{serviceId}', '#{icd}')">
+				</input>
+			</a4j:outputPanel>
+
+			<a4j:outputPanel layout="none" rendered="#{link eq 'true'}">
+				<a href="javascript:void(0)" title="Show metadata"
+					style="text-decoration: underline; white-space: nowrap;"
+					onclick="presentFunction('#{productId}','#{collectionId}', '#{presentType}', '#{serviceId}', '#{icd}')">
+					<h:outputText rendered="#{not content}"
+						value="#{empty label ? loc['searchinput.text.showmetadata'] : label}" />
+					<a4j:outputPanel rendered="#{content}">
+						<ui:insert />
+					</a4j:outputPanel>
+				</a>
+			</a4j:outputPanel>
+
+
+			<a4j:outputPanel layout="none" rendered="#{link eq 'select'}">
+				<script type="text/javascript">
+				presentValue = null;
+				function setPresentValue(val){
+					document.getElementById('present-button').disabled = "";
+					presentValue = val;
+				}
+			</script>
+				<rich:spacer height="2px" />
+				<table style="width: 100%">
+					<tr>
+						<td style="width: 100%"><select style="width: 100%"
+							onchange="setPresentValue(this.value)">
+								<option value="Choose"></option>
+								<ui:insert />
+						</select></td>
+						<td><input type="button" id="present-button" disabled="true"
+							class="button-image button-image-metadata"
+							value="#{empty label ? loc['searchinput.text.showmetadata'] : label}"
+							onclick="presentFunction(presentValue,'','')"> </input></td>
+					</tr>
+				</table>
+			</a4j:outputPanel>
+
+		</a4j:outputPanel>
+	</a4j:outputPanel>
+</ui:composition>
+
+</html>
