@@ -1,0 +1,9 @@
+.sse-mainClass fieldset {
+	margin: 8px;
+}
+
+.sse-mainClass .legendcheckbox {
+	margin-right: 3px;
+	position: relative;
+	top: 3px;
+}

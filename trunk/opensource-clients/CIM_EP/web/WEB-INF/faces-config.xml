@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	
+	<component>
+		<display-name>Repeat</display-name>
+		<component-type>spb.mass.navigation.utils.UIRepeatComponent</component-type>
+		<component-class>spb.mass.navigation.utils.UIRepeatComponent</component-class>
+		<component-extension>
+			<component-family>javax.faces.Data</component-family>
+			<renderer-type>org.ajax4jsf.components.RepeatRenderer</renderer-type>
+		</component-extension>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.service.search.SearchQueryablesComponent</component-type>
+		<component-class>spb.mass.navigation.service.search.SearchQueryablesComponent</component-class>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.utils.HtmlLinkComponent</component-type>
+		<component-class>spb.mass.navigation.utils.HtmlLinkComponent</component-class>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.service.search.HelpTooltipComponent</component-type>
+		<component-class>spb.mass.navigation.service.search.HelpTooltipComponent</component-class>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.service.search.AttachCalendarConverterComponent</component-type>
+		<component-class>spb.mass.navigation.service.search.AttachCalendarConverterComponent</component-class>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.utils.ToggleTableElementComponent</component-type>
+		<component-class>spb.mass.navigation.utils.ToggleTableElementComponent</component-class>
+	</component>
+	<component>
+		<component-type>spb.mass.navigation.service.search.CompanyLogoComponent</component-type>
+		<component-class>spb.mass.navigation.service.search.CompanyLogoComponent</component-class>
+	</component>
+	<converter>
+		<converter-id>datecal</converter-id>
+		<converter-class>spb.mass.navigation.utils.DateCalendarConverter</converter-class>
+	</converter>
+	<!-- Business Delegates Don't use them in jsf pages, they are defined here 
+		for dependency injection purposes -->
+	<managed-bean>
+		<managed-bean-name>searchOperationDelegate</managed-bean-name>
+		<managed-bean-class>spb.mass.businessdelegate.service.SearchOperationDelegate</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>ssoBean</managed-bean-name>
+		<managed-bean-class>spb.mass.navigation.service.UMSSOBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>searchOperationDelegate</property-name>
+			<value>#{searchOperationDelegate}</value>
+		</managed-property>
+	</managed-bean>	
+	<managed-bean>
+		<managed-bean-name>serviceBean</managed-bean-name>
+		<managed-bean-class>spb.mass.navigation.service.ServiceBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>searchOperationDelegate</property-name>
+			<value>#{searchOperationDelegate}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>ssoBean</property-name>
+			<value>#{ssoBean}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>chartBean</managed-bean-name>
+		<managed-bean-class>spb.mass.navigation.service.ChartBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>searchResultBean</property-name>
+			<value>#{serviceBean}</value>
+		</managed-property>
+	</managed-bean>	
+	<!-- Bean displaying FacesMessages, used in _messages.xhtml (and <spb:messages>) -->
+	<managed-bean>
+		<managed-bean-name>messagesBean</managed-bean-name>
+		<managed-bean-class>spb.mass.navigation.messages.MessagesBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<application>		
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>fr</supported-locale>
+		</locale-config>
+		<message-bundle>resources</message-bundle>
+	</application>
+</faces-config>

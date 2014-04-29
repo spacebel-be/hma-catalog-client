@@ -1,0 +1,86 @@
+<project name="catalogueClient.war" basedir="." default="war">
+	<!-- Local system paths -->
+	<property name="webroot.dir" value="${basedir}/web" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="webinf.dir" value="${webroot.dir}/WEB-INF" />
+	<property name="version" value="v1.0"/>
+	<!-- Project settings -->
+	<property name="project.distname" value="catalogueClient" />
+	<property name="build.dir" value="build/" />
+	<property name="dist.dir" value="dist"/>
+
+
+	<!-- classpath for compiling  -->
+	<path id="compile.classpath">		
+		<fileset dir="ex-lib/" includes="**/*.jar" />		
+		<fileset dir="${webinf.dir}/lib" includes="**/*.jar" />
+		<pathelement path="${webinf.dir}/classes" />
+	</path>
+
+
+	<!-- Check timestamp on files -->
+	<target name="prepare" depends="clean">
+		<tstamp />
+	</target>
+
+	<!-- Copy any resource or configuration files -->
+	<target name="resources">
+		<copy todir="${webinf.dir}/classes" includeEmptyDirs="no">
+			<fileset dir="${src.dir}/conf">
+				<patternset>					
+					<include name="**/*.properties" />
+					<include name="**/*.xml" />
+				</patternset>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Normal build of application -->
+	<target name="compile" depends="prepare,resources">
+		<javac srcdir="${src.dir}" destdir="${webinf.dir}/classes" debug="true">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<!-- Remove classes directory for clean build -->
+	<target name="clean" description="Prepare for clean build">
+		<delete dir="${webinf.dir}/classes" />
+		<mkdir dir="${webinf.dir}/classes" />
+	</target>
+
+	<!-- Build entire project -->
+	<target name="build" depends="prepare,compile">
+		<delete dir="${build.dir}/${project.distname}" />
+		<mkdir dir="${build.dir}/${project.distname}" />
+		<!-- copy web dir to build/catalogueClient -->
+		<copy todir="${build.dir}/${project.distname}" includeEmptyDirs="no">
+			<fileset dir="${webroot.dir}">
+				<patternset>					
+					<exclude name="light-map-viewer/**" />					
+				</patternset>
+			</fileset>
+		</copy>
+		<!-- Extract viewer to build/catalogueClient/web/js -->
+		<unzip src="${webroot.dir}/light-map-viewer/spacemap.zip"
+			dest="${build.dir}/${project.distname}/js">
+		</unzip>
+	</target>
+	<!-- Create binary distribution -->
+	<target name="war" depends="build">
+		<delete file="${build.dir}/${project.distname}.war" />
+		<war basedir="${build.dir}/${project.distname}" warfile="${build.dir}/${project.distname}.war" webxml="${build.dir}/${project.distname}/WEB-INF/web.xml">
+			<exclude name="WEB-INF/${build.dir}/**" />
+			<exclude name="WEB-INF/src/**" />
+			<exclude name="WEB-INF/web.xml" />
+		</war>
+		<delete dir="${build.dir}/${project.distname}" />
+	</target>
+
+	<target name="dist" depends="war">
+		<mkdir dir="${dist.dir}"/>
+		<!-- binary-->	
+		<jar destfile="${dist.dir}/${project.distname}-bin-${version}.zip">
+			<fileset dir="${build.dir}"/>
+		</jar>
+	</target>
+</project>

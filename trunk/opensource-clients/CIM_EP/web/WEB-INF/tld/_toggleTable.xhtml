@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<a4j:loadStyle src="/css/toggle_table.css" />
+	<a4j:loadStyle src="/css/style.css" />
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery(".spb-toggleTable-section").click(function(e){
+				var node = jQuery(e.target);
+				while(node.parent().hasClass("spb-toggleTable-section")){
+					node = node.parent();
+				}
+				var content = node.parent().parent().next();
+				if(content.is(':visible')){
+					content.hide();
+					jQuery(".spb-toggleTable-section-link", node).text("[+]");
+				} else {
+					content.show();
+					jQuery(".spb-toggleTable-section-link", node).text("[-]");
+				}
+			});
+		});
+	</script>
+	<table class="tabletoggle">
+		<ui:insert />
+	</table>
+</ui:composition>
+
+</html>

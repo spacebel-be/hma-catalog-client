@@ -1,0 +1,86 @@
+<html>
+<head>
+</head>
+
+<body style="font: 10px Helvetica Neue, Arial, sans-serif;">
+<form name="treeForm" id="treeForm">
+<div class="catalogueText" id="treeDiv" name="treeDiv"></div>
+</form>
+
+<script type="text/javascript" src="js/Bs_Misc.lib.js"></script>
+<script type="text/javascript" src="js/Bs_Array.class.js"></script>
+<script type="text/javascript" src="js/Bs_Tree.class.js"></script>
+<script type="text/javascript" src="js/Bs_TreeElement.class.js"></script>
+<script type="text/javascript" src="js/Bs_Checkbox.class.js"></script>
+<script type="text/javascript" src="js/menu_parser.js"></script>
+<script type="text/javascript">
+
+
+
+ parse();
+  var t = new Bs_Tree();
+  t.imageDir = './';
+  t.checkboxSystemImgDir = './';
+  t.useCheckboxSystem      = true;
+  t.checkboxSystemWalkTree = 3;
+  t.initByArray(a);
+  t.drawInto('treeForm');
+ 
+  
+  
+  /* added by acl to select collection passed in URL */
+  // semicolons separated path. each path is a dot separated string of nodes 
+  //ex: DLR.LST.DAY;DLR.POLY_AQ_TEST
+  var selectedCollections = "";//parent.portalScripts.getFromSSEWindow("defaultSelectedCollections")();
+  if (selectedCollections != "") {
+  
+    var selectedCollectionsTab = selectedCollections.split(";");
+    
+    for (var i=0; i < selectedCollectionsTab.length; i++) {
+      var selectedCollection = selectedCollectionsTab [i];
+      
+      if (selectedCollection.length == 0) {
+        continue;
+      }
+      
+      var selectedPathTab = selectedCollection.split(".");
+      
+      var currentPathTab = [];
+      
+      for (var j=0; j < selectedPathTab.length; j++) {
+        var selectedPath = selectedPathTab [j];
+        currentPathTab [j] = selectedPath;
+        
+        if ( j < (selectedPathTab.length -1)) {
+          
+          var selectTreeElement = t.getElementByCaptionPath(currentPathTab);
+          
+          if (selectTreeElement != false) {
+            try {
+              selectTreeElement.open();
+            } catch (e) {
+              ;
+            }
+          }
+        } else {
+          var selectTreeElement = t.getElementByCaptionPath(currentPathTab);
+          if (selectTreeElement != false) {
+            try {
+              selectTreeElement.setCheckboxValue(true);
+              } catch (e) {
+              ;
+            }
+          }
+        }
+      }
+    
+    }
+  
+  
+  }
+    
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:osParams xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+	xmlns:geo="http://a9.com/-/opensearch/extensions/geo/1.0/"
+	xmlns:time="http://a9.com/-/opensearch/extensions/time/1.0/"
+	xmlns:eo="http://a9.com/-/opensearch/extensions/eo/1.0/"
+	xmlns:sru="http://a9.com/-/opensearch/extensions/sru/2.0/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:semantic="http://a9.com/-/opensearch/extensions/semantic/1.0/"
+	xmlns:param="http://a9.com/-/spec/opensearch/extensions/parameters/1.0/">
+	
+	<param:Parameter name="eo_parentIdentifier" value="{eo:parentIdentifier}" title="Parent Identifier" type="list"/>
+	<param:Parameter name="time_start" value="{time:start}" title="Start Date" type="date"/>
+	<param:Parameter name="time_end" value="{time:end}" title="End Date" type="date"/>
+	
+	<!-- OGC 10-032 Table 4- Search operation queryable mappings  -->
+	<param:Parameter name="searchTerms" value="{searchTerms}" title="Search Terms" type="text"/>
+	<param:Parameter name="geo_uid" value="{geo:uid}" title="Identifier" type="text"/>
+	<param:Parameter name="geo_lat" value="{geo:lat}" title="Latitude" type="text"/>
+	<param:Parameter name="geo_lon" value="{geo:lon}" title="Longitude" type="text"/>
+	<param:Parameter name="geo_name" value="{geo:name}" title="Location Name" type="text"/>
+	<param:Parameter name="geo_radius" value="{geo:radius}" title="Radius (Meter)" type="text"/>
+	<param:Parameter name="geo_relation" value="{geo:relation}" title="Spatial Relation" type="list">
+		<param:Option value="intersects" label="Intersects"/>
+		<param:Option value="contains" label="Contains"/>
+		<param:Option value="disjoint" label="Disjoint"/>
+	</param:Parameter>
+	<param:Parameter name="time_timePosition" value="{time:timePosition}" title="Time Position" type="date"/>
+	<param:Parameter name="time_relation" value="{time:relation}" title="Temporal Relation" type="list">
+		<param:Option value="intersects" label="Intersects"/>
+		<param:Option value="contains" label="Contains"/>
+		<param:Option value="during" label="During"/>
+		<param:Option value="disjoint" label="Disjoint"/>	
+	</param:Parameter>
+	
+	<!-- OGC 13-026 Table 3 - OpenSearch Parameters for Collection Search -->
+	<param:Parameter name="eo_productType" value="{eo:productType}" title="Product Type" type="text"/>
+	<param:Parameter name="eo_platformShortName" value="{eo:platformShortName}" title="Platform Short Name" type="text"/>
+	<param:Parameter name="eo_platformSerialIdentifier" value="{eo:platformSerialIdentifier}" title="Platform Serial Id" type="text"/>
+	<param:Parameter name="eo_instrument" value="{eo:instrument}" title="Instrument" type="text"/>
+	<param:Parameter name="eo_sensorType" value="{eo:sensorType}" title="Sensor Type" type="list">
+		<param:Option value="OPTICAL" label="OPTICAL"/>
+		<param:Option value="RADAR" label="RADAR"/>
+		<param:Option value="ALTIMETRIC" label="ALTIMETRIC"/>
+		<param:Option value="ATMOSPHERIC" label="ATMOSPHERIC"/>
+		<param:Option value="LIMB" label="LIMB"/>
+	</param:Parameter>
+	<param:Parameter name="eo_compositeType" value="{eo:compositeType}" title="Composite Type" type="text"/>
+	<param:Parameter name="eo_processingLevel" value="{eo:processingLevel}" title="Processing Level" type="text"/>
+	<param:Parameter name="eo_orbitType" value="{eo:orbitType}" title="Orbit Type" type="text"/>
+	<param:Parameter name="eo_resolution" value="{eo:resolution}" title="Resolution (Meter)" type="text"/>
+	<param:Parameter name="eo_spectralRange" value="{eo:spectralRange}" title="Spectral Range" type="text"/>
+	<param:Parameter name="eo_wavelengths" value="{eo:wavelengths}" title="Wavelengths" type="text"/>
+	<param:Parameter name="eo_useLimitation" value="{eo:useLimitation}" title="Use Limitation" type="list">
+		<param:Option value="TRUE" label="TRUE"/>
+		<param:Option value="TRUE" label="TRUE"/>
+	</param:Parameter>
+	<param:Parameter name="eo_hasSecurityConstraints" value="{eo:hasSecurityConstraints}" title="Has Security Const" type="list">
+		<param:Option value="TRUE" label="TRUE"/>
+		<param:Option value="TRUE" label="TRUE"/>
+	</param:Parameter>
+	<param:Parameter name="eo_organizationName" value="{eo:organizationName}" title="Organization Name" type="text"/>
+	<param:Parameter name="eo_dissemination" value="{eo:dissemination}" title="Dissemination" type="text"/>
+	
+	<!-- OGC 13-026 Table 4 - OpenSearch Parameters for Product Search -->
+	<param:Parameter name="eo_productionStatus" value="{eo:productionStatus}" title="Production Status" type="text"/>
+	<param:Parameter name="eo_acquisitionType" value="{eo:acquisitionType}" title="Acquisition Type" type="list">
+		<param:Option value="NOMINAL" label="NOMINAL"/>
+		<param:Option value="CALIBRATION" label="CALIBRATION"/>
+		<param:Option value="OTHER" label="OTHER"/>
+	</param:Parameter>
+	<param:Parameter name="eo_orbitNumber" value="{eo:orbitNumber}" title="Orbit Number" type="text"/>
+	<param:Parameter name="eo_orbitDirection" value="{eo:orbitDirection}" title="Orbit Direction" type="list">
+		<param:Option value="ASCENDING" label="ASCENDING"/>
+		<param:Option value="DESCENDING" label="DESCENDING"/>
+	</param:Parameter>
+	<param:Parameter name="eo_track" value="{eo:track}" title="Track" type="text"/>
+	<param:Parameter name="eo_frame" value="{eo:frame}" title="Frame" type="text"/>
+	<param:Parameter name="eo_swathIdentifier" value="{eo:swathIdentifier}" title="Swath Identifier" type="text"/>
+	<param:Parameter name="eo_cloudCover" value="{eo:cloudCover}" title="Cloud Cover" type="text"/>
+	<param:Parameter name="eo_snowCover" value="{eo:snowCover}" title="Snow Cover" type="text"/>
+	<param:Parameter name="eo_imageQualityDegradation" value="{eo:imageQualityDegradation}" title="Image Quality Deg" type="list">
+		<param:Option value="NOMINAL" label="NOMINAL"/>
+		<param:Option value="DEGRADED" label="DEGRADED"/>
+	</param:Parameter>	
+	<param:Parameter name="eo_imageQualityDegradationTag" value="{eo:imageQualityDegradationTag}" title="Image Qly Deg Tag" type="text"/>
+	<param:Parameter name="eo_processorName" value="{eo:processorName}" title="Processor Name" type="text"/>
+	<param:Parameter name="eo_processingCenter" value="{eo:processingCenter}" title="Processing Center" type="text"/>
+	<param:Parameter name="eo_processingDate" value="{eo:processingDate}" title="Processing Date" type="date"/>
+	<param:Parameter name="eo_sensorMode" value="{eo:sensorMode}" title="Sensor Mode" type="text"/>
+	<param:Parameter name="eo_archivingCenter" value="{eo:archivingCenter}" title="Archiving Center" type="text"/>
+	<param:Parameter name="eo_processingMode" value="{eo:processingMode}" title="Processing Mode" type="text"/>
+	
+	<!-- OGC 13-026 Table 5 - OpenSearch Parameters for Acquistion Parameters Search -->
+	<param:Parameter name="eo_availabilityTime" value="{eo:availabilityTime}" title="Availability Time" type="text"/>
+	<param:Parameter name="eo_acquisitionStation" value="{eo:acquisitionStation}" title="Acquisition Station" type="text"/>
+	<param:Parameter name="eo_acquisitionSubType" value="{eo:acquisitionSubType}" title="Acquisition Sub Type" type="text"/>
+	<param:Parameter name="eo_startTimeFromAscendingNode" value="{eo:startTimeFromAscendingNode}" title="Start Time From Asc Node" type="text"/>
+	<param:Parameter name="eo_completionTimeFromAscendingNode" value="{eo:completionTimeFromAscendingNode}" title="Completion Time From Asc Node" type="text"/>
+	<param:Parameter name="eo_illuminationAzimuthAngle" value="{eo:illuminationAzimuthAngle}" title="Illumination Azimuth Angle" type="text"/>
+	<param:Parameter name="eo_illuminationZenithAngle" value="{eo:illuminationZenithAngle}" title="Illumination Zenith Angle" type="text"/>
+	<param:Parameter name="eo_illuminationElevationAngle" value="{eo:illuminationElevationAngle}" title="Illumination Elevation Angle" type="text"/>
+	<param:Parameter name="eo_polarisationMode" value="{eo:polarisationMode}" title="Polarisation Mode" type="list">
+		<param:Option value="D" label="D"/>
+		<param:Option value="Q" label="Q"/>
+		<param:Option value="S" label="S"/>
+		<param:Option value="T" label="T"/>
+		<param:Option value="UNDEFINED" label="UNDEFINED"/>
+	</param:Parameter>
+	<param:Parameter name="eo_polarizationChannels" value="{eo:polarizationChannels}" title="Polarization Channels" type="text"/>
+	<param:Parameter name="eo_antennaLookDirection" value="{eo:antennaLookDirection}" title="Antenna Look Direction" type="list">
+		<param:Option value="LEFT" label="LEFT"/>
+		<param:Option value="RIGHT" label="RIGHT"/>
+	</param:Parameter>
+	<param:Parameter name="eo_minimumIncidenceAngle" value="{eo:minimumIncidenceAngle}" title="Min Incidence Angle" type="text"/>
+	<param:Parameter name="eo_maximumIncidenceAngle" value="{eo:maximumIncidenceAngle}" title="Max Incidence Angle" type="text"/>
+	<param:Parameter name="eo_dopplerFrequency" value="{eo:dopplerFrequency}" title="Doppler Frequency" type="text"/>
+	<param:Parameter name="eo_incidenceAngleVariation" value="{eo:incidenceAngleVariation}" title="Inc Angle Variation" type="text"/>
+	
+	<!-- Dublin Core -->	
+	<param:Parameter name="dc_subject" value="{dc:subject}" title="Subject" type="text"/>
+	<param:Parameter name="dc_type" value="{dc:type}" title="Type" type="text"/>
+	<param:Parameter name="dc_title" value="{dc:title}" title="Title" type="text"/>
+	<param:Parameter name="dc_publisher" value="{dc:publisher}" title="Publisher" type="text"/>
+	
+	<!-- Others -->
+	<param:Parameter name="semantic_classifiedAs" value="{semantic:classifiedAs}" title="Classified As" type="text"/>
+</os:osParams>

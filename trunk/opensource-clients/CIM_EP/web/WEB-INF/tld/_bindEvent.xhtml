@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+
+	<a4j:jsFunction actionListener="#{managedBean[method]}"
+		name="#{callback}" reRender="#{reRender}">
+		<f:param name="event" />
+		<f:param name="data" />
+	</a4j:jsFunction>
+
+	<script type="text/javascript">
+	jQuery(document).ready(
+			function() {
+				SPBEventing.bindEvent(#{event},function(event, data){
+						<c:if test="#{clean or empty clean}">
+							var elem = eval(#{rich:element(reRender)});
+							if(elem != "undefined"){
+								elem.innerHTML = '<div class="loading-image" />';
+							}
+						</c:if>
+						#{callback}(event, data);
+					});
+			});
+	</script>
+
+
+</ui:composition>
+</html>
