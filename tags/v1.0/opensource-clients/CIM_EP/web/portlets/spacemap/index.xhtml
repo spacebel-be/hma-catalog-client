@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	
+	<script type="text/javascript">
+		jQuery(window).load(
+			function() {
+				initSpaceMap();			
+			}
+		);
+	</script>
+
+	<div style="width: 100%; height: 100%" id="spacemap-container" class="spaceContainer">		
+		<div id="spacepanel" class="spaceControlPanel" style="width: 100%"/>
+		<div id="spacemap"
+			style="border: 1px solid #C4C0C9;height: 375px;"/>
+		<input type="hidden" name="olAOI" id="olAOI" value="" />
+		<div id="spacemapStatus">
+			<div id="spacemapScale"/>
+			<div id="spacemapMousePosition" />
+		</div>			
+	</div>
+	<!-- add layers popup window -->
+	<rich:modalPanel id="list-layers-panel" width="800" height="600" domElementAttachment="parent" style="z-index:100000;background-color: #FFFFFF;text-align: left" styleClass="present-modal-panel">
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="Add Layers From Capabilities" style="color: #000000"/>
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup style="margin: 2px 2px; cursor:pointer;">
+				<h:graphicImage value="/images/close.png" id="hidelink" />
+				<rich:componentControl for="list-layers-panel" attachTo="hidelink" operation="hide" event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+		<h:outputText styleClass="text-label" value="WMS Capabilities URL:" />
+		<input id="wmsUrl2GetCapabilities" type="text" size="50" value="http://crisma.spacebel.be:8080/genesis-jsf/js/spacemap/capabilities-osw.xml"/>
+		<input type="button" value="Get Layers" onclick="loadLayersFromWMSUrl();" />
+		<br/>
+		<div id="layersListContainer"/>
+	</rich:modalPanel>
+			
+	</ui:composition>
+
+</html>

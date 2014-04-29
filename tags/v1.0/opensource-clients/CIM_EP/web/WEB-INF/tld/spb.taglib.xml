@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "facelet-taglib_1_0.dtd">
+<facelet-taglib>
+	<namespace>http://www.spacebel.be/genesis/jsf</namespace>
+
+	<tag>
+		<tag-name>focus</tag-name>
+		<source>./_focus.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>formcalendar</tag-name>
+		<source>_formCalendar.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>formfield</tag-name>
+		<source>_formInput.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>formselect</tag-name>
+		<source>_formSelect.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>collectionPicker</tag-name>
+		<source>./search/_collectionPicker.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>messages</tag-name>
+		<source>./_messages.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>ajaxActivity</tag-name>
+		<source>./_ajaxActivity.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>toggleTable</tag-name>
+		<source>./_toggleTable.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>toggleTableSection</tag-name>
+		<source>./_toggleTableSection.xhtml</source>
+	</tag>		
+	
+	<!-- Javascript eventing link -->
+	<tag>
+		<tag-name>fireEvent</tag-name>
+		<source>_fireEvent.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>bindEvent</tag-name>
+		<source>_bindEvent.xhtml</source>
+	</tag>
+	
+	<!-- Creates a histogram -->
+	<tag>
+		<tag-name>chart</tag-name>
+		<source>./search/_chart.xhtml</source>
+	</tag>
+	
+	<!-- Creates a scroller for search results -->
+	<tag>
+		<tag-name>scroller</tag-name>
+		<source>./search/_scroller.xhtml</source>
+	</tag>	
+	<tag>
+		<tag-name>outputItemProperty</tag-name>
+		<source>./search/_outputItemProperty.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>presentLink</tag-name>
+		<source>./search/_presentLink.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>checkboxSelectForBasket</tag-name>
+		<source>./search/_checkboxSelectForBasket.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>pickList</tag-name>
+		<source>./picklist/_picklist.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>toggleTableElement</tag-name>
+		<component>
+			<component-type>spb.mass.navigation.utils.ToggleTableElementComponent</component-type>
+		</component>
+	</tag>
+	<!-- Used in search pages for rendering a select box of optional queryables -->
+	<tag>
+		<tag-name>searchQueryables</tag-name>
+		<component>
+			<component-type>spb.mass.navigation.service.search.SearchQueryablesComponent</component-type>
+		</component>
+	</tag>
+	<!-- Attach the converter to calendars -->
+	<tag>
+		<tag-name>attachCalendarConverterComponent</tag-name>
+		<component>
+			<component-type>spb.mass.navigation.service.search.AttachCalendarConverterComponent</component-type>
+		</component>
+	</tag>
+	<!-- Prints a <a> tag -->
+	<tag>
+		<tag-name>htmlLink</tag-name>
+		<component>
+			<component-type>spb.mass.navigation.utils.HtmlLinkComponent</component-type>
+		</component>
+	</tag>
+	<tag>
+		<tag-name>companyLogo</tag-name>
+		<component>
+			<component-type>spb.mass.navigation.service.search.CompanyLogoComponent</component-type>
+		</component>
+	</tag>
+	<!-- Display a thumbnail with the preview property if found, the whole image 
+		resized if not -->
+	<tag>
+		<tag-name>thumbnail</tag-name>
+		<source>./search/_thumbnail.xhtml</source>
+	</tag>
+	
+	<function>
+		<function-name>substring</function-name>
+		<function-class>spb.mass.navigation.service.FaceletFunctions</function-class>
+		<function-signature>java.lang.String substring(java.lang.String,int,int)</function-signature>
+	</function>
+	<function>
+		<function-name>shortenEOPCollectionNames</function-name>
+		<function-class>spb.mass.navigation.service.FaceletFunctions</function-class>
+		<function-signature>java.lang.String shortenEOPCollectionNames(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>nullIfNotValidURL</function-name>
+		<function-class>spb.mass.navigation.service.FaceletFunctions</function-class>
+		<function-signature>java.lang.String nullIfNotValidURL(java.lang.String)</function-signature>
+	</function>
+</facelet-taglib>
