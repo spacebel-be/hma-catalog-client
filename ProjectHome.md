@@ -1,0 +1,2 @@
+This component is a Java Web-based catalog client supporting the following specifications:  OGC 07-118, OGC 10-032, OGC 13-026 and OGC 13-084. The OGC 13-084 catalog client supports the SOAP binding and optionally includes SAML 1.1 security tokens provided by an HMA STS service. Its implementation was funded by the European Space Agency under the HMA initiative.
+This catalog client web application (war file) is available following the download link.
